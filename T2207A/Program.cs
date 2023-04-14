@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using T2207A;
+using T2207A.assignment3;
 
 public class Program
 {
@@ -7,24 +8,24 @@ public class Program
     {
         /*Console.WriteLine("Hello World");// print
         int x = 10;
-         string s = "T2207A";
-         double pi = 3.14159;
+        string s = "T2207A";
+        double pi = 3.14159;
 
-            if (x > 10)
-            {
-               x--;
-            }
-            else
-           {
-                x++;
-           }
+        if (x > 10)
+        {
+            x--;
+        }
+        else
+        {
+            x++;
+        }
 
         int[] arr = new int[5];// array
-           arr[0] = 1;
-           arr[1] = 22;
-           arr[2] = 13;
-           arr[3] = 64;
-           arr[4] = -5;
+        arr[0] = 1;
+        arr[1] = 22;
+        arr[2] = 13;
+        arr[3] = 64;
+        arr[4] = -5;
 
         foreach (int i in arr)
         {
@@ -44,20 +45,20 @@ public class Program
         Console.WriteLine("n = ");
         string cmd3 = Console.ReadLine();
         int m = Convert.ToInt32(cmd3);
-        if (isPrimed(m)) 
+        if (isPrimed(m))
         {
-           Console.WriteLine("So "+ m +" la so nguyen to!");
-        } 
+            Console.WriteLine("So " + m + " la so nguyen to!");
+        }
         else
-        { 
-            Console.WriteLine("\nSo "+m+" khong la so nguyen to");
+        {
+            Console.WriteLine("\nSo " + m + " khong la so nguyen to");
         }
 
         // List 
 
         List<int> list = new List<int>();
         list.Add(1);
-        list.Add(7);    
+        list.Add(7);
         list.Add(-6);
         list.Add(24);
         list.ForEach(i => Console.WriteLine(i));
@@ -66,7 +67,7 @@ public class Program
         st.Run();
         st.Lean();*/
 
-        Fraction x1 = new Fraction();
+        /*Fraction x1 = new Fraction();
         Fraction x2 = new Fraction();
         Fraction x3 = new Fraction();
 
@@ -77,8 +78,27 @@ public class Program
 
         x3 = x1.Add(x2);
         x3.Reduce();
-        x3.Print();
-        
+        x3.Print();*/
+
+        /*Student st = new Student();
+        st.Lean();
+        st.Name = "Nguyen Van An";
+        st.Age = 18;
+        st.Email = "annv@gmail.com";
+        Console.WriteLine(st.Name);
+        Console.WriteLine(st.Age);
+        Console.WriteLine(st.Email);*/
+
+        VietNamCustomer customerVN = new VietNamCustomer();
+        customerVN.Enter();
+        ForeignCustomer foreignCustomer = new ForeignCustomer();
+        foreignCustomer.Enter();
+        customerVN.InfoCustomer();
+        foreignCustomer.InfoCustomer();
+        Console.WriteLine(customerVN.Payment());
+        Console.WriteLine(foreignCustomer.Payment());
+
+
     }
     public static Boolean isPrimed(int m)
     {
