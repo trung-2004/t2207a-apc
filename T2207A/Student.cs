@@ -51,7 +51,7 @@ namespace T2207A
         }
         public void Lean()
         {
-            Console.WriteLine("Leanning...");
+            Console.WriteLine("Leanning..."); 
         }
         public void Lean(string s)// overloading
         {

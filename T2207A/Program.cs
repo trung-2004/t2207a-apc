@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using T2207A;
 using T2207A.assignment3;
+using T2207A.assignment4;
+using T2207A.assignment5;
 
 public class Program
 {
@@ -89,15 +91,66 @@ public class Program
         Console.WriteLine(st.Age);
         Console.WriteLine(st.Email);*/
 
-        VietNamCustomer customerVN = new VietNamCustomer();
+        /*VietNamCustomer customerVN = new VietNamCustomer();
         customerVN.Enter();
         ForeignCustomer foreignCustomer = new ForeignCustomer();
         foreignCustomer.Enter();
         customerVN.InfoCustomer();
         foreignCustomer.InfoCustomer();
         Console.WriteLine(customerVN.Payment());
-        Console.WriteLine(foreignCustomer.Payment());
+        Console.WriteLine(foreignCustomer.Payment());*/
 
+        /*Human h = new Human();
+        Human h2 = new Human() { Telephone = "0987654"};
+
+        h.family[0] = "Nguyen Duc Anh";
+        Console.WriteLine(h.family[0]);
+
+        h2[0] = "Dao Nhat Tan";
+
+        List<string> list = new List<string>();*/
+
+        // Car car = new Car();// trong C# ko co anonymous class
+
+        /*PhoneBook list = new PhoneBook();
+        list.InsertPhone("Trung", "0359080256");
+        list.InsertPhone("Hieu", "0456837352");
+        list.InsertPhone("Hiep", "039474633");
+        list.InsertPhone("Duc", "0337645332");
+        list.InsertPhone("Trung", "037462854");
+        
+        for (int i = 0; i< list.phoneList.Count; i++)
+        {
+            Console.WriteLine(list.phoneList[i].ToString());
+        }
+
+        list.SortPhone();
+
+
+        for (int i = 0; i < list.phoneList.Count; i++)
+        {
+            Console.WriteLine(list.phoneList[i].ToString());
+        }*/
+        News n = new News();
+        Console.WriteLine("Nhap id: ");
+        string cmd1 = Console.ReadLine();
+        n.Id = Convert.ToInt32(cmd1);
+        Console.WriteLine("Nhap ten: ");
+        n.Title = Console.ReadLine();
+        Console.WriteLine("Nhap ngay xuat ban: ");
+        n.PublishDate = Console.ReadLine();
+        Console.WriteLine("Nhap ten tac gia: ");
+        n.Author = Console.ReadLine();
+        Console.WriteLine("Nhap noi dung: ");
+        n.Content = Console.ReadLine();
+
+        for (int i = 0; i < n.RateList.Length; i++)
+        {
+            Console.WriteLine("Nhap vao gia tri cho phan tu thu " + (i + 1) + ": ");
+            n.RateList[i] = Convert.ToInt32(Console.ReadLine());
+        }
+        n.Calculate();
+        n.Display();
 
     }
     public static Boolean isPrimed(int m)
