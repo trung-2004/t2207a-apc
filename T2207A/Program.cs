@@ -3,9 +3,47 @@ using T2207A;
 using T2207A.assignment3;
 using T2207A.assignment4;
 using T2207A.assignment5;
+using T2207A.assignment6;
 
 public class Program
 {
+    public static void Main2(string[] args)
+    {
+        Thread t = new Thread(DemoRun);// tham so la 1 function
+        t.IsBackground = true;
+        t.Start("Heloo");// truyen tham so thi truyen vao ham Start()
+        for (int i = 0; i < 20; i++)
+        {
+            Console.WriteLine("Main i = " + i);
+            try
+            {
+                Thread.Sleep(1000);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+    }
+    static void DemoRun(object o)// chi nhan parameter la obj
+    {
+        string s = (string)o;// ep kieu
+        for (int i = 0; i < 40; i++)
+        {
+            lock (s)
+            {
+                Console.WriteLine(s + " i = "+i);
+            }
+            //Console.WriteLine(o+" i = "+i);
+            try
+            {
+                Thread.Sleep(1000);
+            } catch (Exception e)
+            {
+
+            }
+        }
+    }
     public static void Main(string[] args)
     {
         /*Console.WriteLine("Hello World");// print
@@ -131,7 +169,7 @@ public class Program
         {
             Console.WriteLine(list.phoneList[i].ToString());
         }*/
-        News n = new News();
+        /*News n = new News();
         Console.WriteLine("Nhap id: ");
         string cmd1 = Console.ReadLine();
         n.Id = Convert.ToInt32(cmd1);
@@ -150,8 +188,130 @@ public class Program
             n.RateList[i] = Convert.ToInt32(Console.ReadLine());
         }
         n.Calculate();
-        n.Display();
+        n.Display();*/
+        ManagerStudent quanLySinhVien = new ManagerStudent();
 
+        while (true)
+        {
+            Console.WriteLine("\nCHUONG TRINH QUAN LY SINH VIEN C#");
+            Console.WriteLine("*************************MENU**************************");
+            Console.WriteLine("**  1. Them sinh vien.                               **");
+            Console.WriteLine("**  2. Cap nhat thong tin sinh vien boi ID.          **");
+            Console.WriteLine("**  3. Xoa sinh vien boi ID.                         **");
+            Console.WriteLine("**  4. Tim kiem sinh vien theo ten.                  **");
+            Console.WriteLine("**  5. Sap xep sinh vien theo diem trung binh (GPA). **");
+            Console.WriteLine("**  6. Sap xep sinh vien theo ten.                   **");
+            Console.WriteLine("**  7. Sap xep sinh vien theo ID.                    **");
+            Console.WriteLine("**  8. Hien thi danh sach sinh vien.                 **");
+            Console.WriteLine("**  0. Thoat                                         **");
+            Console.WriteLine("*******************************************************");
+            Console.Write("Nhap tuy chon: ");
+            int key = Convert.ToInt32(Console.ReadLine());
+            switch (key)
+            {
+                case 1:
+                    Console.WriteLine("\n1. Them sinh vien.");
+                    quanLySinhVien.AddStudent();
+                    Console.WriteLine("\nThem sinh vien thanh cong!");
+                    break;
+                case 2:
+                    if (quanLySinhVien.CountStudent() > 0)
+                    {
+                        int id;
+                        Console.WriteLine("\n2. Cap nhat thong tin sinh vien. ");
+                        Console.Write("\nNhap ID: ");
+                        id = Convert.ToInt32(Console.ReadLine());
+                        quanLySinhVien.UpdateStudent(id);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nSanh sach sinh vien trong!");
+                    }
+                    break;
+                case 3:
+                    if (quanLySinhVien.CountStudent() > 0)
+                    {
+                        int id;
+                        Console.WriteLine("\n3. Xoa sinh vien.");
+                        Console.Write("\nNhap ID: ");
+                        id = Convert.ToInt32(Console.ReadLine());
+                        quanLySinhVien.DeleteStudent(id);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nSanh sach sinh vien trong!");
+                    }
+                    break;
+                case 4:
+                    if (quanLySinhVien.CountStudent() > 0)
+                    {
+                        Console.WriteLine("\n4. Tim kiem sinh vien theo ten.");
+                        Console.Write("\nNhap ten de tim kiem: ");
+                        string name = Convert.ToString(Console.ReadLine());
+                        List<Student> searchResult = quanLySinhVien.FindStudentByName(name);
+                        quanLySinhVien.ShowStudent(searchResult);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nSanh sach sinh vien trong!");
+                    }
+                    break;
+                case 5:
+                    if (quanLySinhVien.CountStudent() > 0)
+                    {
+                        Console.WriteLine("\n5. Sap xep sinh vien theo diem trung binh (GPA).");
+                        quanLySinhVien.SortStudentByMediumScore();
+                        quanLySinhVien.ShowStudent(quanLySinhVien.getListSinhVien());
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nSanh sach sinh vien trong!");
+                    }
+                    break;
+                case 6:
+                    if (quanLySinhVien.CountStudent() > 0)
+                    {
+                        Console.WriteLine("\n6. Sap xep sinh vien theo ten.");
+                        quanLySinhVien.SortStudentByName();
+                        quanLySinhVien.ShowStudent(quanLySinhVien.getListSinhVien());
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nSanh sach sinh vien trong!");
+                    }
+                    break;
+                case 7:
+                    if (quanLySinhVien.CountStudent() > 0)
+                    {
+                        Console.WriteLine("\n6. Sap xep sinh vien theo ID.");
+                        quanLySinhVien.SortStudentByID();
+                        quanLySinhVien.ShowStudent(quanLySinhVien.getListSinhVien());
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nSanh sach sinh vien trong!");
+                    }
+                    break;
+                case 8:
+                    if (quanLySinhVien.CountStudent() > 0)
+                    {
+                        Console.WriteLine("\n7. Hien thi danh sach sinh vien.");
+                        quanLySinhVien.ShowStudent(quanLySinhVien.getListSinhVien());
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nSanh sach sinh vien trong!");
+                    }
+                    break;
+                case 0:
+                    Console.WriteLine("\nBan da chon thoat chuong trinh!");
+                    return;
+                default: 
+                    Console.WriteLine("\nHay chon chuc nang trong hop menu.");
+                    break;
+            }
+
+        }
     }
     public static Boolean isPrimed(int m)
     {
