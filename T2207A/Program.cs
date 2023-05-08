@@ -46,7 +46,6 @@ public class Program
             {
                 Console.WriteLine("Invalid option");
             }
-
             Console.WriteLine();
         } while (option != 4);
     }
